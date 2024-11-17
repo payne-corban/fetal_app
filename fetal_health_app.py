@@ -78,7 +78,7 @@ def main():
         # Add prediction probability column
         input_data['Prediction Probability (%)'] = np.max(prediction_probs, axis=1) * 100
         
-        # Function to apply the background color based on prediction
+        # Used Chatgpt to help apply the background color based on prediction
         def color_predicted_class(val):
             if val == "Normal":
                 return 'background-color: lime'
@@ -138,7 +138,7 @@ def main():
                 report_file = 'fetal_class_report_ada.csv'
             elif ml_selection == 'Soft Voting':
                 report_file = 'fetal_class_report_svc.csv'
-
+            
             if report_file:
                 report_df = pd.read_csv(report_file, index_col=0).transpose()
                 st.dataframe(report_df.style.background_gradient(cmap='RdBu').format(precision=2))
